@@ -1,6 +1,7 @@
 {
   "resultados": 61,
-  "categorias": ["acción", "aventura", "ciencia ficción", "drama", "terror"],
+  "generos": ["acción", "aventura", "ciencia ficción", "drama", "terror"],
+  "tipo": ["película", "series"],
   "pagina": 0,
   "data": [
     {
@@ -8,7 +9,7 @@
       "titulo": "La odisea",
       "sinopsis": "La película La Odisea dirigida por Christopher Nolan narra el peligroso viaje de diez años del rey Odiseo (Matt Damon) para regresar a Ítaca tras la guerra de Troya. Mientras lucha contra monstruos y dioses para reunirse con su esposa Penélope (Anne Hathaway) y su hijo Telémaco (Tom Holland), su hogar es acosado por pretendientes.",
       "url_pelicula": "https://www.youtube.com/watch?v=X9nUrOnHlz0",
-      "img_portada": "../images/la_odisea.jpg",
+      "img_portada": "./images/la_odisea.jpg",
       "duracion": "2h:52m",
       "fecha_creacion": "14/08/2026",
       "fecha_actualizacion": "14/08/2026",
