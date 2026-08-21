@@ -5,7 +5,7 @@ import { Main } from "./layout/main";
 import { fetchMovies } from "./services/fetchFilms";
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState();
 
   useEffect(() => {
     const getData = async () => {
