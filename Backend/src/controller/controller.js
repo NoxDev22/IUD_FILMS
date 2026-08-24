@@ -2,10 +2,13 @@ import { MODEL } from "../model/model.js";
 
 export class CONTROLLER {
   static async getAll(req, res) {
-    // const { categoría, titulo, genero, director, tipo, offset = 0 } = req.query;
     try {
       const movies = await MODEL.getAll(req.query);
-      console.log(movies);
+      if (!movies) {
+        return res
+          .status(404)
+          .json({ message: "No hay resultados en su busqueda" });
+      }
       return res.status(200).json(movies);
     } catch (error) {
       // Imprime el error completo en la consola de la terminal
@@ -19,35 +22,50 @@ export class CONTROLLER {
   }
 
   static async getById(req, res) {
-    const { filmId } = req.params;
-    const filmById = await MODEL.getById(filmId);
-    return res.status(200).json(filmById);
-  }
+    try {
+      const { filmId } = req.params;
+      const filmById = await MODEL.getById(filmId);
 
+      if (!filmById) {
+        return res.status(404).json({ message: "Película no encontrada" });
+      }
+      return res.status(200).json(filmById);
+    } catch (error) {
+      return res.status(error.status || 500).json({
+        message: error.message || "Error al obtener la película",
+      });
+    }
+  }
   static async create(req, res) {
     try {
-      const response = await MODEL.create(req.body);
-      return res.status(201).json(response);
-    } catch (e) {
-      res.status(500).send({ error: e });
+      const createdFilm = await MODEL.create(req.body);
+      return res.status(201).json(createdFilm);
+    } catch (error) {
+      res
+        .status(error.status || 500)
+        .json({ message: error.message || "Error al crear el nuevo film" });
     }
   }
   static async update(req, res) {
     try {
       const { filmId } = req.params;
-      const response = await MODEL.update(filmId, req.body);
-      return res.status(200).json({ status: "update-ok" });
-    } catch (e) {
-      res.status(500).send({ error: `!Error ${e}` });
+      const updatedFilm = await MODEL.update(filmId, req.body);
+      return res.status(200).json(updatedFilm);
+    } catch (error) {
+      res
+        .status(error.status || 500)
+        .json({ message: error.message || `!Error al actualizar la película` });
     }
   }
   static async delete(req, res) {
     try {
       const { filmId } = req.params;
-      const response = await MODEL.delete(filmId);
-      return res.status(202).json(response);
-    } catch (e) {
-      res.status(500).send({ error: e });
+      const deletedFilm = await MODEL.delete(filmId);
+      return res.status(202).json(deletedFilm);
+    } catch (error) {
+      return res.status(error.status || 500).json({
+        message: error.message || "Error al eliminar la película",
+      });
     }
   }
 }

@@ -1,0 +1,45 @@
+@import "../base/colors.css";
+
+/* Estilos de Paginación */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.pagination_btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: var(--soft-white);
+  color: var(--deep-black);
+  border: 1px solid var(--soft-ivory);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pagination_btn:hover:not(:disabled) {
+  background-color: var(--deep-black);
+  color: var(--soft-white);
+}
+
+.pagination_btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination_info {
+  display: flex;
+  gap: 4px;
+  font-size: 1rem;
+  color: var(--soft-ivory);
+}
+
+.pagination_info span {
+  font-weight: 600;
+  color: var(--soft-white);
+}

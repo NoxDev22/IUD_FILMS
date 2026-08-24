@@ -1,31 +1,22 @@
-import { useEffect, useState } from "react";
-import { Header } from "./components/header";
-import { Main } from "./layout/main";
-//Obteniendo los datos
-import { fetchMovies } from "./services/fetchFilms";
-
+//PAGES
+import { Home } from "./pages/home";
+import { Movies } from "./pages/movies";
+import { Series } from "./pages/series";
+import { InfoFilm } from "./pages/infoFilm";
+import { Admin } from "./pages/admin";
+import { NotFound } from "./pages/404";
+//router
+import { Routes, Route } from "react-router";
 function App() {
-  const [movies, setMovies] = useState();
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const films = await fetchMovies();
-        console.log("Films:", films);
-        setMovies(films);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-    getData();
-  }, []);
-
-  if (movies.length === 0) return;
   return (
-    <>
-      <Header />
-      <Main listOfFilms={movies} />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/peliculas" element={<Movies />} />
+      <Route path="/series" element={<Series />} />
+      <Route path="/:id" element={<InfoFilm />} />
+      <Route path="/administrador" element={<Admin />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

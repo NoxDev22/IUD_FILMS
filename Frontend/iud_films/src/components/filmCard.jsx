@@ -5,8 +5,8 @@ export function FilmCard({ filmName, filmImg, filmYear }) {
         <img src={filmImg} alt="" className="filmCard__img" />
       </figure>
       <div className="filmCard__footer">
-        <p className="filmCard__name">{filmName}</p>
-        <p className="filmCard__year">{filmYear}</p>
+        <p className="filmCard_text filmCard__name">{filmName}</p>
+        <p className="filmCard_text filmCard__year">{filmYear}</p>
       </div>
     </div>
   );
