@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { CONTROLLER } from "../controller/controller.js";
+import { FILM_CONTROLLER } from "../controller/filmController.js";
 const ROUTER = Router();
 
-ROUTER.get("/", CONTROLLER.getAll);
-ROUTER.get("/:filmId", CONTROLLER.getById);
-ROUTER.post("/", CONTROLLER.create);
-ROUTER.put("/:filmId", CONTROLLER.update);
-ROUTER.delete("/:filmId", CONTROLLER.delete);
+ROUTER.get("/", FILM_CONTROLLER.getAll);
+ROUTER.get("/:filmId", FILM_CONTROLLER.getById);
+ROUTER.post("/", FILM_CONTROLLER.create);
+ROUTER.put("/:filmId", FILM_CONTROLLER.update);
+ROUTER.delete("/:filmId", FILM_CONTROLLER.delete);
 export default ROUTER;

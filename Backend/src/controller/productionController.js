@@ -1,30 +1,29 @@
-import { MODEL } from "../model/model.js";
+import { PRODUCTION_MODEL } from "../model/productionModel.js";
 
-export class CONTROLLER {
+// SOLO FUNCIONA EL METOD GET ALL
+export class PRODUCTION_CONTROLLER {
   static async getAll(req, res) {
     try {
-      const movies = await MODEL.getAll(req.query);
-      if (!movies) {
+      const productions = await PRODUCTION_MODEL.getAll(req.query);
+      if (!productions) {
         return res
           .status(404)
           .json({ message: "No hay resultados en su busqueda" });
       }
-      return res.status(200).json(movies);
+      return res.status(200).json(productions);
     } catch (error) {
       // Imprime el error completo en la consola de la terminal
       console.error("Error en getFilms:", error);
-
       // Devuelve un JSON con el mensaje real del error
       return res.status(500).json({
         message: error.message || "Error interno del servidor",
       });
     }
   }
-
   static async getById(req, res) {
     try {
       const { filmId } = req.params;
-      const filmById = await MODEL.getById(filmId);
+      const filmById = await PRODUCTION_MODEL.getById(filmId);
 
       if (!filmById) {
         return res.status(404).json({ message: "Película no encontrada" });
@@ -38,7 +37,7 @@ export class CONTROLLER {
   }
   static async create(req, res) {
     try {
-      const createdFilm = await MODEL.create(req.body);
+      const createdFilm = await PRODUCTION_MODEL.create(req.body);
       return res.status(201).json(createdFilm);
     } catch (error) {
       res
@@ -49,7 +48,7 @@ export class CONTROLLER {
   static async update(req, res) {
     try {
       const { filmId } = req.params;
-      const updatedFilm = await MODEL.update(filmId, req.body);
+      const updatedFilm = await PRODUCTION_MODEL.update(filmId, req.body);
       return res.status(200).json(updatedFilm);
     } catch (error) {
       res
@@ -60,7 +59,7 @@ export class CONTROLLER {
   static async delete(req, res) {
     try {
       const { filmId } = req.params;
-      const deletedFilm = await MODEL.delete(filmId);
+      const deletedFilm = await PRODUCTION_MODEL.delete(filmId);
       return res.status(202).json(deletedFilm);
     } catch (error) {
       return res.status(error.status || 500).json({

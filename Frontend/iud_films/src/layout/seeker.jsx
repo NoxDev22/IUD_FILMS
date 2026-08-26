@@ -13,7 +13,6 @@ export function Seeker({ onSearch, type, isInactive }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFilters((prev) => ({
       ...prev,
       [name]: value,

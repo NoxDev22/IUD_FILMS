@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 // Importas los modelos exportados
-import Gender from "./genderSchema.js";
+import Gender from "./genreSchema.js";
 import Director from "./directorSchema.js";
 import Production from "./productionSchema.js";
 import Type from "./typeSchema.js";

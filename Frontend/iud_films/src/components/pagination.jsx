@@ -10,7 +10,6 @@ export function Pagination({ currentPage, totalPages, onPageChange, limit }) {
       >
         &laquo; Anterior
       </button>
-
       <p className="pagination_info">
         Pagina
         <span>{currentPage}</span>

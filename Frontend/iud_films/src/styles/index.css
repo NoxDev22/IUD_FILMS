@@ -5,6 +5,13 @@
 @import "./layout/hero.css";
 @import "./layout/footer.css";
 @import "./layout/seeker.css";
+@import "./layout/infoFilm.css";
 /*COMPONENTS*/
 @import "./components/filmCard.css";
 @import "./components/pagination.css";
+@import "./components/adminFilmCard.css";
+@import "./components/adminFilmAside.css";
+/*PAGES*/
+@import "./page/information.css";
+@import "./page/admin.css";
+@import "./page/addFilm.css";

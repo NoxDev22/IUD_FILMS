@@ -1,0 +1,96 @@
+@import "../base/colors.css";
+
+.infoFilmAside {
+  display: grid;
+  grid-template-rows: 320px 320px;
+  gap: 1rem;
+}
+
+.infoFilmAside_frontPage {
+  border-radius: 14px;
+  border: 1px solid var(--soft-ivory-alpha);
+}
+.infoFilmAside_figure {
+  width: 100%;
+  height: 100%;
+}
+.infoFilmAside_img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 14px;
+}
+.infoFilmAside_infoCard {
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--soft-ivory-alpha);
+}
+.infoFilmAside_infoTitle {
+  font-size: 1.2rem;
+  color: var(--vivid-red);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--soft-ivory-alpha);
+}
+.infoFilmAside_infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding-top: 10px;
+}
+.infoFilmAside_infoLi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+.infoFilmAside_infoSubTitle {
+  font-weight: 600;
+}
+.infoFilmAside_infoText {
+  color: var(--ocean-red);
+}
+/*INFORMATION MAIN*/
+.infoFilmMain_content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.infoFilmMain_title {
+  color: var(--soft-white);
+}
+.infoFilmMain_list {
+  display: flex;
+  gap: 1.4rem;
+}
+.infoFilmMain_li {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--deep-black);
+  background-color: var(--sky-blue);
+}
+.infoFilmMain_sinopsis {
+  line-height: 28px;
+}
+.infoFilmMain_buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.infoFilmMain_button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 45px;
+  padding-inline: 14px;
+  background-color: var(--night-black);
+  border: 1px solid var(--soft-ivory-alpha);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.infoFilmMain_redButton {
+  font-weight: 600;
+  color: var(--soft-white);
+  background-color: var(--strong-red);
+}

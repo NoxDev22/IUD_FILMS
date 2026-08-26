@@ -62,6 +62,7 @@ export function Main() {
           movies.data.map((movie) => (
             <FilmCard
               key={movie._id}
+              filmId={movie._id}
               filmName={movie.titulo}
               filmImg={movie.img_portada}
               filmYear={movie.fecha_estreno.slice(6)}

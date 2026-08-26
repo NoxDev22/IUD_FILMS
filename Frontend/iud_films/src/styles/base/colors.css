@@ -1,13 +1,19 @@
 :root {
   --deep-black: #131212; /* Fondo */
-  --deep-black-alpha: #131212a1; /* Fondo */
+  --deep-black-alpha: #131212c4; /* Fondo */
   --night-black: #0f0f0f; /* Header */
+  --night-black-alpha: #1b1b1c;
   --strong-red: #e50914; /* Color 4 */
   --ocean-red: #ffb4aa; /* Color 4 */
+  --ocean-red-alpha: #ff7a6977; /* Color 4 */
   --vivid-red: #ea5455; /* Color 5 */
   --navy-blue: #0073ef; /* Color 6 */
   --soft-ivory: #f9f5ebb0; /* Texto */
+  --soft-ivory-alpha: #f9f5eb52; /* Texto */
   --soft-white: #e5e2e1;
-
+  --soft-transparent: #f3f2f110;
   --sky-blue: #8aa9c4; /* Color 7 */
+  /*COLORES DE ETIQUETAS*/
+  --green-movie: #6a994e;
+  --orange-serie: #c28918;
 }

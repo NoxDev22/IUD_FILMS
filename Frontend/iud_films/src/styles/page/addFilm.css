@@ -1,0 +1,197 @@
+@import "../base/colors.css";
+
+.addFilm {
+  min-height: 100dvh;
+}
+.addFilm_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  padding-inline: 2rem;
+  background-color: var(--night-black);
+}
+.addFilm_headerTitle {
+  color: var(--strong-red);
+}
+/****************************************************/
+.addFilm_form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 520px;
+  padding: 1.2rem 1.5rem;
+  background-color: var(--night-black);
+  border: 1px solid var(--soft-transparent);
+  border-radius: 12px;
+  margin: 1.8rem auto;
+}
+
+.addFilm_formHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.addFilm_formHeaderTitle {
+  font-size: 1.8rem;
+  color: var(--soft-white);
+}
+.addFilm_formHeaderText {
+  font-size: 0.9rem;
+}
+.addFilm_formHeaderRadios {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.addFilm_formLabelRadio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+input[type="radio"] {
+  appearance: none;
+  background-color: transparent; /* Color de fondo inicial */
+  margin: 0;
+  font: inherit;
+  width: 12px;
+  height: 12px;
+  border: 0.4px solid var(--vivid-red);
+  border-radius: 50%;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+/* Cambia el fondo y añade un punto interno al seleccionarlo */
+input[type="radio"]:checked {
+  background-color: var(--strong-red); /* Fondo interno cuando se selecciona */
+  /* Color del borde exterior */
+}
+.inactiveInputRadioMovie {
+  pointer-events: none;
+}
+
+.activeInputRadio {
+  pointer-events: unset;
+}
+
+.addFilm_formBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--soft-transparent);
+}
+.addFilm_formBodyLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.addFilm_formBodyArea {
+  width: 100%;
+  height: 75px;
+  padding: 7px 12px;
+  color: var(--soft-white);
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1px solid var(--ocean-red-alpha);
+  resize: none;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+.addFilm_formBody input {
+  height: 40px;
+  color: var(--soft-ivory);
+  padding-inline: 12px;
+  background-color: transparent;
+  border-radius: 7px;
+  border: 1px solid var(--ocean-red-alpha);
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+.addFilm_formBody input:focus,
+.addFilm_formBodyArea:focus {
+  border-color: var(--strong-red);
+}
+.addFilm_formBodyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.addFilm_formBodyGrid label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.addFilm_labelListDirectors {
+  position: relative;
+}
+
+.addFilm_formBodyGridGenre {
+  appearance: base-select;
+  padding-inline: 12px 27px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  color: var(--soft-ivory);
+  line-height: inherit;
+  background-color: var(--night-black);
+  border-radius: 7px;
+  border: 1px solid var(--ocean-red-alpha);
+  outline: none;
+  cursor: pointer;
+}
+::picker(select) {
+  appearance: base-select;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 4px;
+  margin-bottom: 5px;
+}
+option {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-property: color, background;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  &:hover {
+    background-color: var(--vivid-red);
+    color: white;
+  }
+  &:checked {
+    background: var(--ocean-red);
+    color: white;
+  }
+}
+.addFilm_buttons {
+  display: flex;
+  gap: 1em;
+}
+.addFilm_button {
+  height: 36px;
+  width: 130px;
+  font-size: 0.9rem;
+  color: var(--soft-white);
+  background-color: var(--night-black-alpha);
+  border-radius: 6px;
+  border: 1px solid var(--ocean-red-alpha);
+  cursor: pointer;
+}
+.addFilm_buttonRed {
+  background-color: var(--strong-red);
+}

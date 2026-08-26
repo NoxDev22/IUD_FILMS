@@ -4,31 +4,12 @@
   position: relative;
   transition: cursor 0.3s ease-in-out;
   border-radius: 7px;
-  border: 1px solid var(--soft-ivory);
+  border: 1px solid var(--soft-ivory-alpha);
 }
 .filmCard:hover {
   cursor: pointer;
 }
 
-.filmCard::before {
-  content: "Mas Información";
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: calc(100% - 35px);
-  font-size: 1.4rem;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.616);
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-  transition: opacity 0.3s ease-in-out;
-}
-.filmCard:hover::before {
-  opacity: 1;
-}
 .filmCard__picture {
   width: 100%;
   height: 100%;
@@ -39,6 +20,10 @@
   display: block;
   width: 100%;
   height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.filmCard__picture:hover > .filmCard__img {
+  transform: scale(1.2);
 }
 .filmCard__footer {
   position: absolute;

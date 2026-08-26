@@ -1,6 +1,6 @@
 import { Slide } from "../components/slide";
 //CONSTANTS
-import { HERO_LIST } from "../constants/heroList";
+import { HERO_LIST } from "../constants/heroList.js";
 
 export function Hero() {
   return (

@@ -1,0 +1,8 @@
+.information {
+  display: grid;
+  grid-template-columns: 240px 600px;
+  justify-content: center;
+  gap: 5rem;
+  min-height: calc(100dvh - 134px);
+  padding: 1.5rem;
+}

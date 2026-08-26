@@ -1,82 +1,37 @@
 import mongoose from "mongoose";
 // Schemas
-import Film from "../schemas/filmSchema.js";
-import Director from "../schemas/directorSchema.js";
-import Gender from "../schemas/genderSchema.js";
-import Type from "../schemas/typeSchema.js";
+import Production from "../schemas/productionSchema.js";
 
-export class MODEL {
-  static async getAll({
-    titulo,
-    genero,
-    director,
-    tipo,
-    offset = 0,
-    limit,
-  } = {}) {
+// SOLO FUNCIONA EL METOD GET ALL
+export class PRODUCTION_MODEL {
+  static async getAll({ nombre, estado, offset = 0, limit } = {}) {
     const query = {};
-
-    // 1. Filtro por título (este sí es un String directo en Film)
-    if (titulo) {
-      query.titulo = { $regex: titulo, $options: "i" };
+    // 1. Filtro por Nombre(este sí es un String directo en Film)
+    if (nombre) {
+      query.nombre = { $regex: nombre, $options: "i" };
     }
-
-    // 2. Filtro por Director (por nombre o parcial)
-    if (director) {
-      const directoresEncontrados = await Director.find(
-        { nombre: { $regex: director, $options: "i" } },
-        "_id",
-      );
-      const directorIds = directoresEncontrados.map((d) => d._id);
-      query.director = { $in: directorIds };
-    }
-
-    // 3. Filtro por Género (por nombre o parcial)
-    if (genero) {
-      const generosEncontrados = await Gender.find(
-        { nombre: { $regex: genero, $options: "i" } },
-        "_id",
-      );
-      const generoIds = generosEncontrados.map((g) => g._id);
-      query.genero = { $in: generoIds };
-    }
-
-    // 4. Filtro por Tipo (por nombre o parcial)
-    if (tipo) {
-      const tiposEncontrados = await Type.find(
-        { nombre: { $regex: tipo, $options: "i" } },
-        "_id",
-      );
-
-      const tipoIds = tiposEncontrados.map((t) => t._id);
-      query.tipo = { $in: tipoIds };
+    // 2. Filtro por Estado (por nombre o parcial)
+    if (estado) {
+      query.estado = { $regex: estado, $options: "i" };
     }
 
     const numericOffset = Math.max(0, Number(offset));
     const numericLimit = Math.max(1, Number(limit));
 
     // Ejecutamos la consulta y el conteo total en paralelo para mayor velocidad
-    const [allFilms, totalCount] = await Promise.all([
-      Film.find(query)
-        .populate("genero", "nombre")
-        .populate("director", "nombre")
-        .populate("productora", "nombre")
-        .populate("tipo", "nombre")
-        .skip(numericOffset)
-        .limit(numericLimit)
-        .lean(),
-      Film.countDocuments(query),
+    const [allProductions, totalCount] = await Promise.all([
+      Production.find(query).skip(numericOffset).limit(numericLimit).lean(),
+      Production.countDocuments(query),
     ]);
 
     return {
       total: totalCount,
-      results: allFilms.length,
+      results: allProductions.length,
       offset: numericOffset,
       limit: numericLimit,
-      data: allFilms,
+      data: allProductions,
     };
   }
-
   static async getById(filmId) {
     // Validación previa para evitar que BSON falle si el ID no es válido
     if (!mongoose.Types.ObjectId.isValid(filmId)) {
@@ -86,7 +41,7 @@ export class MODEL {
     }
 
     // findById acepta directamente el string del ID
-    const film = await Film.findById(filmId)
+    const film = await Production.findById(filmId)
       .populate("genero", "nombre")
       .populate("director", "nombre")
       .populate("productora", "nombre")
@@ -95,21 +50,18 @@ export class MODEL {
 
     return film;
   }
-
   static async create(film) {
     // Creamos el nuevo documento
     const newFilm = new Film(film);
     await newFilm.save();
-
     // Retornamos el elemento creado populando sus referencias
-    return await Film.findById(newFilm._id)
+    return await Production.findById(newFilm._id)
       .populate("genero", "nombre")
       .populate("director", "nombre")
       .populate("productora", "nombre")
       .populate("tipo", "nombre")
       .lean();
   }
-
   static async update(id, film) {
     // 1. Validar que el ID tenga un formato de ObjectId válido
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -117,7 +69,7 @@ export class MODEL {
       error.status = 400;
       throw error;
     }
-    const updatedFilm = await Film.findByIdAndUpdate(id, film, {
+    const updatedFilm = await Production.findByIdAndUpdate(id, film, {
       returnDocument: "after",
       runValidators: true,
     })
@@ -136,7 +88,7 @@ export class MODEL {
       throw error;
     }
 
-    const deletedFilm = await Film.findByIdAndDelete(filmId);
+    const deletedFilm = await Production.findByIdAndDelete(filmId);
     return deletedFilm;
   }
 }
