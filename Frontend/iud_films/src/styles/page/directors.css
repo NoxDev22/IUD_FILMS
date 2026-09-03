@@ -1,0 +1,11 @@
+.directorSection {
+  display: grid;
+  gap: 1.15rem;
+  padding-inline: 1.1rem;
+}
+
+.directorContainer_containerDirectors {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}

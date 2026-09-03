@@ -7,7 +7,7 @@ export function FilmCard({ filmId, filmName, filmImg, filmYear }) {
       <figure
         className="filmCard__picture"
         onClick={() => {
-          navigate(`/${filmId}`);
+          navigate(`/films/${filmId}`);
         }}
       >
         <img src={filmImg} alt="" className="filmCard__img" />

@@ -60,7 +60,7 @@ export class DIRECTOR_MODEL {
     const newDirector = new Director(directorData);
     await newDirector.save();
 
-    // Retornamos el elemento creado populando sus referencias
+    // Retornamos el elemento creado
     return await Director.findById(newDirector._id).lean();
   }
   static async update(id, director) {

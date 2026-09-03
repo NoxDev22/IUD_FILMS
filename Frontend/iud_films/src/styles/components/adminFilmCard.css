@@ -10,6 +10,7 @@
   border: 1px solid var(--soft-ivory-alpha);
   border-radius: 8px;
 }
+
 .adminContainer_figure {
   height: 188px;
   width: 100%;
@@ -21,6 +22,9 @@
   border-radius: 7px;
 }
 .adminContainer_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
   padding-block: 5px;
 }
 .adminContainer_title {
@@ -41,7 +45,6 @@
 .adminContainer_buttons {
   display: flex;
   gap: 1rem;
-  padding-top: 2rem;
 }
 .adminContainer_button {
   display: flex;
@@ -56,6 +59,15 @@
   border-radius: 7px;
   border: 1px solid var(--soft-ivory-alpha);
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.adminContainer_button:nth-child(1):hover {
+  color: var(--soft-white);
+  background-color: var(--navy-blue-alpha);
+}
+.adminContainer_button:nth-child(2):hover {
+  color: var(--soft-white);
+  background-color: var(--vivid-red);
 }
 .adminContainer_type {
   position: absolute;

@@ -1,0 +1,47 @@
+.adminSection_form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.adminSection_formTitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--soft-white);
+}
+.adminSection_formCont {
+  display: flex;
+  gap: 1rem;
+}
+.adminSection_formLabel {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 240px;
+  height: 40px;
+  padding-left: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--soft-ivory-alpha);
+}
+.adminSection_formInput {
+  width: 90%;
+  font-size: 0.9rem;
+  color: var(--soft-white);
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.adminSection_formButton {
+  width: 120px;
+  height: 40px;
+  font-size: 1rem;
+  color: var(--soft-white);
+  background-color: transparent;
+  border: 1px solid var(--soft-ivory-alpha);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.adminSection_formButton:hover {
+  background-color: var(--soft-transparent);
+}

@@ -20,27 +20,16 @@ IUD_MOVIES/
 
 # Lista de tareas
 
-1. Agregar librería react router
-2. Diseñar paginas:
-   2.1 Solo películas (COMPLETO)
-   2.2 Solo series (COMPLETO)
-   2.3 Información de película --- hasta aqui paso a funcionalidades
-   2.4 Administrador
-   2.5 Agregar: director,tipo,genero,productora
+- Diseñar las vista para la pagina 404 (COMPLETO)
+- Agregar las películas que están en el JSON (COMPLETO)
+- Diseñar las vistas para directores, géneros, tipos y productoras.(COMPLETO)
+- Obtener la information de la api para las vistas directores, géneros, tipos y productoras.(COMPLETO)
+- Desarrollar la lógica para eliminar filmes, directores, tipos, géneros o productoras.
+- Desarrollar la lógica para agregar filmes, directores, tipos, géneros o productoras y Limpiar el componente addFilm, pasar useStates a useReducer.
+- Desarrollar la lógica para actualizar filmes, directores, tipos, géneros o productoras.
 
-3. Agregar funcionalidad a las paginas
-   2.1 Solo películas (COMPLETO)
-   2.2 Solo series (COMPLETO)
-   2.3 Información de película
-   2.4 Administrador
-   2.5 Agregar: director,tipo,genero,productora
+DETALLES DE ESTÉTICA O FUNCIONALIDADES ADICIONALES
 
-TAREAS PENDIENTES
-
-- Terminar los metodos (getBiId,delete,put) en los controladores y modelos de (type,directors,productions,genre)
-- Agregar debounce a las funciones handleChange en los componentes Admin y Seeker
-- Crear un customHook con lo valores para los filtros de los formularios,seeker y admin
-- Crear lógica para el cambio de colo del tag dependiendo de si es una película o serie
-
-- Limpiar mas los componentes como addFilm, pasar useState a useReducer
-- Funcion de agregar filmes, generos, directores,tipos,productoras
+- Diseñar las vistas para las paginas estadísticas y configuraciones
+- Diseñar vista de login y crear usuario(OPCIONAL).
+- Desarrollar lógica para el login y creación de usuario (OPCIONAL).

@@ -32,63 +32,66 @@ export class PRODUCTION_MODEL {
       data: allProductions,
     };
   }
-  static async getById(filmId) {
+  static async getById(productionId) {
     // Validación previa para evitar que BSON falle si el ID no es válido
-    if (!mongoose.Types.ObjectId.isValid(filmId)) {
+    if (!mongoose.Types.ObjectId.isValid(productionId)) {
       const error = new Error("El ID proporcionado no es un ObjectId válido");
       error.status = 400;
       throw error;
     }
 
     // findById acepta directamente el string del ID
-    const film = await Production.findById(filmId)
-      .populate("genero", "nombre")
-      .populate("director", "nombre")
-      .populate("productora", "nombre")
-      .populate("tipo", "nombre")
-      .lean();
+    const production = await Production.findById(productionId).lean();
 
-    return film;
+    return production;
   }
-  static async create(film) {
+  static async create(productionData) {
+    // 1. Validar únicamente que el tipo no exista por su título
+    const existingProduction = await Production.findOne({
+      nombre: {
+        $regex: new RegExp(`^${productionData.nombre.trim()}$`, "i"),
+      },
+    });
+
+    if (existingProduction) {
+      const error = new Error(
+        "La productora ya se encuentra registrado en la base de datos.",
+      );
+      error.statusCode = 400;
+      throw error;
+    }
     // Creamos el nuevo documento
-    const newFilm = new Film(film);
-    await newFilm.save();
+    const newProduction = new Production(productionData);
+    await newProduction.save();
     // Retornamos el elemento creado populando sus referencias
-    return await Production.findById(newFilm._id)
-      .populate("genero", "nombre")
-      .populate("director", "nombre")
-      .populate("productora", "nombre")
-      .populate("tipo", "nombre")
-      .lean();
+    return await Production.findById(newProduction._id).lean();
   }
-  static async update(id, film) {
+  static async update(id, production) {
     // 1. Validar que el ID tenga un formato de ObjectId válido
     if (!mongoose.Types.ObjectId.isValid(id)) {
       const error = new Error("El ID proporcionado no es un ObjectId válido");
       error.status = 400;
       throw error;
     }
-    const updatedFilm = await Production.findByIdAndUpdate(id, film, {
-      returnDocument: "after",
-      runValidators: true,
-    })
-      .populate("genero", "nombre")
-      .populate("director", "nombre")
-      .populate("productora", "nombre")
-      .populate("tipo", "nombre")
-      .lean();
+    const updatedProduction = await Production.findByIdAndUpdate(
+      id,
+      production,
+      {
+        returnDocument: "after",
+        runValidators: true,
+      },
+    ).lean();
 
-    return updatedFilm;
+    return updatedProduction;
   }
-  static async delete(filmId) {
-    if (!mongoose.Types.ObjectId.isValid(filmId)) {
+  static async delete(productionId) {
+    if (!mongoose.Types.ObjectId.isValid(productionId)) {
       const error = new Error("El ID proporcionado no es un ObjectId válido");
       error.status = 400;
       throw error;
     }
 
-    const deletedFilm = await Production.findByIdAndDelete(filmId);
-    return deletedFilm;
+    const deletedProduction = await Production.findByIdAndDelete(productionId);
+    return deletedProduction;
   }
 }

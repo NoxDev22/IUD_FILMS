@@ -75,6 +75,7 @@ export function AddFilm() {
             viewBox="0 0 24 24"
             width="25"
             height="25"
+            className="addFilm_arrowBack"
           >
             <path
               fill="#fff"

@@ -1,54 +1,40 @@
-import { useState, useEffect } from "react";
 // COMPONENTS
 import { FilmCard } from "../components/filmCard";
 import { Seeker } from "./seeker";
 import { Pagination } from "../components/pagination";
 // SERVICES
 import { fetchMovies } from "../services/fetchFilms";
+// HELPERS
+import { getPathName } from "../helpers/pathName";
+// REDUCER
+import { Reducer } from "../reducers/filterReducer";
 
 export function Main() {
-  const [movies, setMovies] = useState({ data: [] });
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [activeFilters, setActiveFilters] = useState({});
+  const { state, dispatch } = Reducer();
+  const { movies, loading, page, totalPages, activeFilters, filter } = state;
 
   // PathName utilizado para el filtro de tipo
-  let pathName = window.location.pathname;
-  let type = pathName.slice(1, pathName.length - 1);
+  const type = getPathName();
   let isInactive = type === "pelicula" || type === "serie";
 
   const loadMovies = async (filters, currentPage) => {
-    setLoading(true);
-    const data = await fetchMovies(filters, currentPage);
-    setMovies(data || { ...movies, data: [] });
-    setTotalPages(data.total || 1);
-    setLoading(false);
+    try {
+      dispatch({ type: "FETCH_START" });
+      const data = await fetchMovies(filters, currentPage);
+      dispatch({ type: "FETCH_SUCCESS", payload: data });
+    } catch (error) {
+      console.error(`!Error en la obtención de los datos ${error}`);
+      dispatch({ type: "FETCH_SUCCESS", payload: { data: [], total: 1 } });
+    }
   };
 
-  useEffect(() => {
-    let isMounted = true;
-    async function init() {
-      if (isMounted) {
-        setTotalPages(1);
-        setLoading(false);
-      }
-    }
-
-    init();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   const handleSearch = (filters) => {
-    setActiveFilters(filters);
-    setPage(1);
+    dispatch({ type: "APPLY_SEARCH", payload: filter });
     loadMovies(filters, 1);
   };
 
   const handlePageChange = (newPage) => {
-    setPage(newPage);
+    dispatch({ type: "CHANGE_PAGE", payload: newPage });
     loadMovies(activeFilters, newPage);
   };
 

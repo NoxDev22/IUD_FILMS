@@ -21,6 +21,7 @@
   border-radius: 14px;
 }
 .infoFilmAside_infoCard {
+  height: fit-content;
   padding: 10px;
   border-radius: 14px;
   border: 1px solid var(--soft-ivory-alpha);
@@ -82,15 +83,37 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 50px;
   height: 45px;
   padding-inline: 14px;
   background-color: var(--night-black);
   border: 1px solid var(--soft-ivory-alpha);
   border-radius: 7px;
   cursor: pointer;
+  transition: background 0.3s ease-in-out;
 }
 .infoFilmMain_redButton {
+  width: fit-content;
   font-weight: 600;
   color: var(--soft-white);
+  background-color: var(--vivid-red);
+}
+.infoFilmMain_buttonBack {
+  width: fit-content;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--soft-white);
+}
+.infoFilmMain_buttonBack:hover {
+  background-color: var(--vivid-red);
+}
+.infoFilmMain_redButton:hover {
   background-color: var(--strong-red);
+}
+.infoFilmMain_buttonIcon:hover {
+  background-color: var(--navy-blue-alpha);
+}
+.infoFilmMain_redButton svg {
+  width: 22px;
+  height: 22px;
 }

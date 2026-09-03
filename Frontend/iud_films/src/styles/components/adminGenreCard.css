@@ -1,0 +1,90 @@
+@import "../base/colors.css";
+
+.adminGenreContainer_film {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  height: 250px;
+  padding: 1rem;
+  border: 1px solid var(--soft-ivory-alpha);
+  border-radius: 10px;
+}
+
+.adminGenreContainer_body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.adminGenreContainer_texts {
+  display: flex;
+  flex-direction: column;
+}
+.adminGenreContainer_title {
+  font-size: 1.5rem;
+  padding-bottom: 7px;
+}
+.adminGenreContainer_description {
+  height: 60px;
+  font-size: 0.93rem;
+  padding-right: 1rem;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  scrollbar-color: var(--soft-ivory) var(--soft-ivory-alpha);
+  scrollbar-width: thin;
+}
+
+/* Color del deslizador al pasar el cursor */
+.adminGenreContainer_description::-webkit-scrollbar-thumb:hover {
+  background-color: var(--deep-black);
+}
+.adminGenreContainer_text {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+.adminGenreContainer_text span {
+  font-weight: 700;
+}
+.adminGenreContainer_buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.adminGenreContainer_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 120px;
+  height: 35px;
+  color: var(--soft-white);
+  background-color: transparent;
+  border: 1px solid var(--soft-ivory-alpha);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.adminGenreContainer_button:hover {
+  background-color: var(--vivid-red);
+}
+.adminGenreContainer_button:hover:nth-child(1) {
+  background-color: var(--navy-blue);
+}
+.adminGenreContainer_type {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.9rem;
+}
+.adminGenreContainer_typeIcon {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--green-movie);
+}

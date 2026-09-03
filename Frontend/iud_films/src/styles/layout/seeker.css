@@ -1,13 +1,13 @@
 @import "../base/colors.css";
 
-.form {
+.seekerForm {
   display: grid;
   justify-items: center;
   gap: 3rem;
   padding: 1.5rem;
   border-radius: 8px;
 }
-.container_form {
+.seekerContainer_form {
   display: grid;
   grid-template-columns: 500px 370px;
   grid-template-rows: repeat(2, 70px);
@@ -22,7 +22,7 @@
   font-size: 1.9rem;
   padding-bottom: 12px;
 }
-.form_label {
+.seekerForm_label {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -30,7 +30,7 @@
   font-size: 0.95rem;
 }
 
-.form_input {
+.seekerForm_input {
   height: 40px;
   width: 100%;
   font-size: 0.9rem;
@@ -38,44 +38,41 @@
   padding-left: 12px;
   background-color: var(--soft-white);
   border-radius: 5px;
-  border: 1px solid var(--soft-ivory);
+  border: 2px solid transparent;
   outline: none;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
-.form_title {
+.seekerForm_input:focus {
+  border-color: var(--vivid-red);
+}
+.seekerForm_title {
   grid-column: 1/2;
   grid-row: 1/2;
 }
-.form_director {
+.seekerForm_director {
   grid-column: 1/2;
   grid-row: 2/3;
 }
-.form_input:focus {
-  border-color: var(--deep-black);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-}
 
-.form_containerSelects {
+.seekerForm_containerSelects {
   display: flex;
   gap: 1.5rem;
 }
 
-.form_selectGroup {
+.seekerForm_selectGroup {
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex: 1;
 }
 
-.form_titleSelect {
+.seekerForm_titleSelect {
   font-weight: 600;
   font-size: 0.95rem;
 }
 
 /* Estilos de los Selects */
-.form_select {
+.seekerForm_select {
   height: 40px;
   width: 100%;
   font-size: 0.9rem;
@@ -90,39 +87,36 @@
     box-shadow 0.2s ease;
 }
 
-.form_select:focus {
+.seekerForm_select:focus {
   border-color: var(--deep-black);
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Botones de acción */
-.form_buttons {
+.seekerForm_buttons {
   display: flex;
   gap: 1rem;
   height: 45px;
 }
 
-.form_btn {
+.seekerForm_btn {
   flex: 1;
   padding: 10px;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--soft-white);
+  background-color: transparent;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: background 0.3s ease-in-out;
   border: 1px solid var(--soft-ivory);
 }
 
-.form_btn--submit {
-  background-color: var(--deep-black);
+.seekerForm_btn--submit:hover {
+  background-color: var(--navy-blue-alpha);
 }
 
-.form_btn--reset {
-  background-color: transparent;
-}
-
-.form_btn:hover {
-  opacity: 0.85;
+.seekerForm_btn--reset:hover {
+  background-color: var(--vivid-red);
 }

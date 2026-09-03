@@ -5,7 +5,6 @@ import Genre from "../schemas/genreSchema.js";
 export class GENRE_MODEL {
   static async getAll({ nombre, estado, offset = 0, limit } = {}) {
     const query = {};
-
     // 1. Filtro por Nombre(este sí es un String directo en Film)
     if (nombre) {
       query.nombre = { $regex: nombre, $options: "i" };
@@ -32,63 +31,61 @@ export class GENRE_MODEL {
       data: allGenres,
     };
   }
-  static async getById(filmId) {
+  static async getById(genreId) {
     // Validación previa para evitar que BSON falle si el ID no es válido
-    if (!mongoose.Types.ObjectId.isValid(filmId)) {
+    if (!mongoose.Types.ObjectId.isValid(genreId)) {
       const error = new Error("El ID proporcionado no es un ObjectId válido");
       error.status = 400;
       throw error;
     }
 
     // findById acepta directamente el string del ID
-    const film = await Film.findById(filmId)
-      .populate("genero", "nombre")
-      .populate("director", "nombre")
-      .populate("productora", "nombre")
-      .populate("tipo", "nombre")
-      .lean();
+    const genre = await Genre.findById(genreId).lean();
 
-    return film;
+    return genre;
   }
-  static async create(film) {
+  static async create(genreData) {
+    // 1. Validar únicamente que el enero no exista por su título
+    const existingGenre = await Genre.findOne({
+      nombre: { $regex: new RegExp(`^${genreData.nombre.trim()}$`, "i") },
+    });
+
+    if (existingGenre) {
+      const error = new Error(
+        "El genero ya se encuentra registrado en la base de datos.",
+      );
+      error.statusCode = 400;
+      throw error;
+    }
     // Creamos el nuevo documento
-    const newFilm = new Film(film);
-    await newFilm.save();
-    // Retornamos el elemento creado populando sus referencias
-    return await Film.findById(newFilm._id)
-      .populate("genero", "nombre")
-      .populate("director", "nombre")
-      .populate("productora", "nombre")
-      .populate("tipo", "nombre")
-      .lean();
+    const newGenre = new Genre(genreData);
+    await newGenre.save();
+
+    // Retornamos el elemento creado
+    return await Genre.findById(newGenre._id).lean();
   }
-  static async update(id, film) {
+  static async update(id, genre) {
     // 1. Validar que el ID tenga un formato de ObjectId válido
     if (!mongoose.Types.ObjectId.isValid(id)) {
       const error = new Error("El ID proporcionado no es un ObjectId válido");
       error.status = 400;
       throw error;
     }
-    const updatedFilm = await Film.findByIdAndUpdate(id, film, {
+    const updatedGenre = await Genre.findByIdAndUpdate(id, genre, {
       returnDocument: "after",
       runValidators: true,
-    })
-      .populate("genero", "nombre")
-      .populate("director", "nombre")
-      .populate("productora", "nombre")
-      .populate("tipo", "nombre")
-      .lean();
+    }).lean();
 
-    return updatedFilm;
+    return updatedGenre;
   }
-  static async delete(filmId) {
-    if (!mongoose.Types.ObjectId.isValid(filmId)) {
+  static async delete(genreId) {
+    if (!mongoose.Types.ObjectId.isValid(genreId)) {
       const error = new Error("El ID proporcionado no es un ObjectId válido");
       error.status = 400;
       throw error;
     }
 
-    const deletedFilm = await Film.findByIdAndDelete(filmId);
-    return deletedFilm;
+    const deletedGenre = await Genre.findByIdAndDelete(genreId);
+    return deletedGenre;
   }
 }

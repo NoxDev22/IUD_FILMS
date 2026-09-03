@@ -5,6 +5,10 @@
   transition: cursor 0.3s ease-in-out;
   border-radius: 7px;
   border: 1px solid var(--soft-ivory-alpha);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.filmCard:hover {
+  box-shadow: 0 0 10px -2px rgba(245 73 39 / 0.7);
 }
 .filmCard:hover {
   cursor: pointer;

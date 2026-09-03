@@ -15,6 +15,12 @@
 .addFilm_headerTitle {
   color: var(--strong-red);
 }
+.addFilm_arrowBack path {
+  transition: all 0.3s ease-in-out;
+}
+.addFilm_arrowBack:hover path {
+  fill: var(--strong-red);
+}
 /****************************************************/
 .addFilm_form {
   display: flex;

@@ -11,7 +11,14 @@
 @import "./components/pagination.css";
 @import "./components/adminFilmCard.css";
 @import "./components/adminFilmAside.css";
+@import "./components/adminForm.css";
+@import "./components/adminSectionSeeker.css";
+@import "./components/adminDirectorCard.css";
+@import "./components/adminGenreCard.css";
 /*PAGES*/
 @import "./page/information.css";
 @import "./page/admin.css";
 @import "./page/addFilm.css";
+@import "./page/404.css";
+@import "./page/films.css";
+@import "./page/directors.css";

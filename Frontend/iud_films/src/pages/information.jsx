@@ -1,7 +1,6 @@
 //REACT ROUTER
 import { useParams } from "react-router";
 //COMPONENTES
-import { Header } from "../layout/header";
 import { Footer } from "../layout/footer";
 //LAYOUT
 import { InfoFilm } from "../layout/infoFilm";
@@ -38,7 +37,6 @@ export function Information() {
 
   return (
     <>
-      <Header />
       <main className="information">
         {loading ? (
           <p>Cargando contenido...</p>

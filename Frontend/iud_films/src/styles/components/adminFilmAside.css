@@ -29,14 +29,14 @@
 .aside_list {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 12px;
 }
 .aside_listLi {
   display: flex;
   align-items: center;
   gap: 1rem;
   font-size: 0.97rem;
-  padding: 5px 12px;
+  padding: 7px 12px;
   transition: background-color 0.3s ease-in-out;
   border-radius: 8px;
 }

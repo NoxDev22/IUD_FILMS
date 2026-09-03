@@ -2,7 +2,7 @@
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 //COMPONENTS
-import { SlideFilm } from "./SlideFilm";
+import { SlideHero } from "./SlideHero";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -21,7 +21,7 @@ export function Slide({ list }) {
     >
       {list.map((fl, i) => (
         <SwiperSlide key={i}>
-          <SlideFilm url={fl.url} name={fl.name} description={fl.description} />
+          <SlideHero url={fl.url} name={fl.name} description={fl.description} />
         </SwiperSlide>
       ))}
     </Swiper>
